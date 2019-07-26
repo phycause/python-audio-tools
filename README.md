@@ -2,7 +2,7 @@
 A collection of audio tools in python.
 
 ## Usage
-Please refer to [/code/examples.py](examples.py).
+Please refer to [examples.py](/code/examples.py).
 
 ## Functions
 ### Display
@@ -25,8 +25,6 @@ Please refer to [/code/examples.py](examples.py).
 ### Display
 * Waveform(multichannel display supported)
 * Spectrogram
-
-
 
 ### Analysis
 * Volume
