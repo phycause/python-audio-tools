@@ -7,7 +7,9 @@ Please refer to [examples.py](/code/examples.py).
 ## Functions
 ### Display
 * Waveform
+![image](figs/waveform_example.png)
 * Spectrum
+![image](figs/spectrum_example.png)
 
 ### Transcoder
 * FFmpeg control tools (wav, mp3, opus, vorbis-ogg, volume detection)
