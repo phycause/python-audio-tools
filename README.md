@@ -1,6 +1,19 @@
 # python-audio-tools
 A collection of audio tools in python.
 
+## Usage
+Please refer to [/code/examples.py](examples.py).
+
+## Functions
+### Display
+* Waveform
+* Spectrum
+
+### Transcoder
+* FFmpeg control tools (wav, mp3, opus, vorbis-ogg, volume detection)
+* Lame control tools (mp3)
+* Opus control tools (opus)
+
 ## To do
 ### Effector
 * EQ
@@ -12,12 +25,14 @@ A collection of audio tools in python.
 ### Display
 * Waveform(multichannel display supported)
 * Spectrogram
-* Spectrum
 
-### Transcoder
-* FFmpeg control tools
-* Lame control tools
+
 
 ### Analysis
 * Volume
 * Phase
+
+### Audio comparison
+* Volume difference
+* Spectrum difference
+* Alignment
