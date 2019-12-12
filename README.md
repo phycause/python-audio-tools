@@ -10,6 +10,9 @@ Please refer to [examples.py](/code/examples.py).
 ![image](figs/waveform_example.png)
 * Spectrum
 ![image](figs/spectrum_example.png)
+*Animate display
+[![Click to see on youtube](figs/animate_display_example.jpg)](https://youtu.be/XhdznTPnn9E)
+
 
 ### Transcoder
 * FFmpeg control tools (wav, mp3, opus, vorbis-ogg, volume detection)
