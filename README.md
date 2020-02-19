@@ -7,11 +7,24 @@ Please refer to [examples.py](/code/examples.py).
 ## Functions
 ### Display
 * Waveform
-![image](figs/waveform_example.png)
+  ![image](figs/waveform_example.png)
+
+  
+
 * Spectrum
-![image](figs/spectrum_example.png)
-*Animate display
-[![Click to see on youtube](figs/animate_display_example.jpg)](https://youtu.be/XhdznTPnn9E)
+  ![image](figs/spectrum_example.png)
+
+  
+
+* Animate display
+
+  [![Click to see on youtube](figs/animate_display_example.jpg)](https://youtu.be/XhdznTPnn9E)
+
+  
+
+* Spectrum difference
+
+  ![](figs/spectrum_diff.png)
 
 
 ### Transcoder

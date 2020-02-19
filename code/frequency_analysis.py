@@ -29,7 +29,7 @@ def get_spectrum(sig, fft_size=4096, avg=True):
     return avg_fft_result
 
 
-def plot_spectrum(sig, fs, path_savefig=None, fft_size=4096, figsize=(10, 6), freqlim=None, amplim=None, unit=('log', 'dB'), avg=True):
+def plot_spectrum(sig, fs, fft_size=4096, figsize=(10, 6), freqlim=None, amplim=None, unit=('log', 'dB'), avg=True, path_savefig=None):
     '''Plot the spectrum
 
     Args:
@@ -52,10 +52,6 @@ def plot_spectrum(sig, fs, path_savefig=None, fft_size=4096, figsize=(10, 6), fr
     frequnit = unit[0]
     ampunit = unit[1]
 
-    # add matplot figure
-    fig = plt.figure(figsize=figsize)
-    ax = plt.subplot(111)
-
     # If avg is False set the fft_size to the sig length.
     if not avg:
         fft_size = int(np.shape(sig)[0])
@@ -64,26 +60,46 @@ def plot_spectrum(sig, fs, path_savefig=None, fft_size=4096, figsize=(10, 6), fr
     fft_result = get_spectrum(sig, fft_size, avg=avg)
 
     # Change the unit of frequency and amplitude axis
-    if ampunit is None:
-        plt.ylabel('Amplitude', fontsize=14, color='#EBEBEB')
+    if ampunit is None or ampunit == 'linear':
+        ylabel = 'Amplitude'
     elif ampunit == 'dB':
         fft_result = 20 * np.log10(fft_result)
-        plt.ylabel('Amplitude (dB)', fontsize=14, color='#EBEBEB')
-    plt.xscale(frequnit)
-    plt.xlabel('Frequency (Hz)', fontsize=14, color='#EBEBEB')
+        ylabel = 'Amplitude (dB)'
 
     # Plot spectrum
     f_axis = np.linspace(0.0, fs/2, fft_size//2 + 1)
-    plt.plot(f_axis, fft_result, color='#1BAED8')
 
     # Set the range of the axes
     if freqlim is not None:
         if freqlim[0] <= 0:
             freqlim = (1, freqlim[1])
             print('Modification: The lowest frequency to show sets to 1 Hz.')
-        plt.xlim(freqlim)
-    if amplim is not None:
-        plt.ylim(amplim)
+
+    plot_line(f_axis, fft_result, figsize, xlabel='Frequency (Hz)', ylabel=ylabel, xunit=frequnit, xlim=freqlim, ylim=amplim, path_savefig=path_savefig)
+
+    return path_savefig
+
+def plot_line(x, y, figsize, xlabel, ylabel, xunit, xlim=None, ylim=None, path_savefig=None):
+
+    # add matplot figure
+    fig = plt.figure(figsize=figsize)
+    ax = plt.subplot(111)
+
+    # Change the unit of x axis
+    plt.xscale(xunit)
+
+    # Set label
+    plt.xlabel(xlabel, fontsize=14, color='#EBEBEB')
+    plt.ylabel(ylabel, fontsize=14, color='#EBEBEB')
+
+    # Plot
+    plt.plot(x, y, color='#1BAED8')
+    
+    # Set limit
+    if xlim is not None:
+        plt.xlim(xlim)
+    if ylim is not None:
+        plt.ylim(ylim)
 
     # Add major and minor grid
     plt.grid(b=True, which='major', color='#515A62', linestyle='-')
